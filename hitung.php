@@ -1,52 +1,23 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <title>Sidebar 07</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<?php
+include 'components/head.php';
+?>
 
 <body>
 
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" class="active">
-            <h1><a href="index.php" class="logo">AC</a></h1>
-            <ul class="list-unstyled components mb-5">
-                <li>
-                    <a href="index.php"><span class="fa fa-user"></span> Alternatif</a>
-                </li>
-                <li>
-                    <a href="kriteria.php"><span class="fa fa-sticky-note"></span> Kriteria</a>
-                </li>
-                <li>
-                    <a href="penilaian.php"><span class="fa fa-list-ol"></span> Penilaian</a>
-                </li>
-                <li class="active">
-                    <a href="hitung.php"><span class="fa fa-cogs"></span> Hitung</a>
-                </li>
-            </ul>
-        </nav>
+        <?php
+        include 'components/sidebar.php';
+        ?>
 
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
-                        <i class="fa fa-bars"></i>
-                        <span class="sr-only">Toggle Menu</span>
-                    </button>
-
-                    <h5 class="nav"> SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN APLIKASI EDITOR'S CHOICE DI PLAY STORE |<b>| METODE SAW</b></h5>
-                </div>
-            </nav>
+            <?php
+            include 'components/navbar.php';
+            ?>
 
             <section id="main-content">
                 <section class="wrapper">
@@ -60,7 +31,7 @@
                     </div>
                     <div>
                         <b>
-                            <h4>MATRIX X</h4>
+                            <h6><b>MATRIX X</b></h6>
                         </b>
                         <table class="table">
                             <thead>
@@ -99,14 +70,16 @@
                                         </tr>
                                 <?php }
                                 } else {
-                                    echo "<th><h4>Data Tidak Ada</h4></th>";
+                                    echo "<tr>
+                                        <td>Data Tidak Ada</td>
+                                    <tr>";
                                 } ?>
                             </tbody>
                         </table>
                     </div>
                     <div>
                         <b>
-                            <h4>MATRIX TERNORMALISASI</h4>
+                            <h6><b>NORMALISASI</b></h6>
                         </b>
                         <table class="table">
                             <thead>
@@ -123,40 +96,49 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $b = 0;
-                                $C1 = '';
-                                $C2 = '';
-                                $C3 = '';
-                                $C4 = '';
-                                $C5 = '';
-                                $C6 = '';
+                                $sql = "SELECT*FROM saw_penilaian";
+                                $hasil = $conn->query($sql);
+                                $rows = $hasil->num_rows;
+                                if ($rows > 0) {
+                                    $b = 0;
+                                    $C1 = '';
+                                    $C2 = '';
+                                    $C3 = '';
+                                    $C4 = '';
+                                    $C5 = '';
+                                    $C6 = '';
 
-                                $sql = "SELECT*FROM saw_penilaian ORDER BY peringkat DESC";
-                                $hasil = $conn->query($sql);
-                                $row = $hasil->fetch_row();
-                                $C1 = $row[1];
-                                // Biaya
-                                $sql = "SELECT*FROM saw_penilaian ORDER BY ukuran ASC";
-                                $hasil = $conn->query($sql);
-                                $row = $hasil->fetch_row();
-                                // End Biaya
-                                $C2 = $row[2];
-                                $sql = "SELECT*FROM saw_penilaian ORDER BY unduhan DESC";
-                                $hasil = $conn->query($sql);
-                                $row = $hasil->fetch_row();
-                                $C3 = $row[3];
-                                $sql = "SELECT*FROM saw_penilaian ORDER BY aktif DESC";
-                                $hasil = $conn->query($sql);
-                                $row = $hasil->fetch_row();
-                                $C4 = $row[4];
-                                $sql = "SELECT*FROM saw_penilaian ORDER BY manfaat DESC";
-                                $hasil = $conn->query($sql);
-                                $row = $hasil->fetch_row();
-                                $C5 = $row[5];
-                                $sql = "SELECT*FROM saw_penilaian ORDER BY kelebihan DESC";
-                                $hasil = $conn->query($sql);
-                                $row = $hasil->fetch_row();
-                                $C6 = $row[6];
+                                    $sql = "SELECT*FROM saw_penilaian ORDER BY peringkat DESC";
+                                    $hasil = $conn->query($sql);
+                                    $row = $hasil->fetch_row();
+                                    $C1 = $row[1];
+                                    // Biaya
+                                    $sql = "SELECT*FROM saw_penilaian ORDER BY ukuran ASC";
+                                    $hasil = $conn->query($sql);
+                                    $row = $hasil->fetch_row();
+                                    // End Biaya
+                                    $C2 = $row[2];
+                                    $sql = "SELECT*FROM saw_penilaian ORDER BY unduhan DESC";
+                                    $hasil = $conn->query($sql);
+                                    $row = $hasil->fetch_row();
+                                    $C3 = $row[3];
+                                    $sql = "SELECT*FROM saw_penilaian ORDER BY aktif DESC";
+                                    $hasil = $conn->query($sql);
+                                    $row = $hasil->fetch_row();
+                                    $C4 = $row[4];
+                                    $sql = "SELECT*FROM saw_penilaian ORDER BY manfaat DESC";
+                                    $hasil = $conn->query($sql);
+                                    $row = $hasil->fetch_row();
+                                    $C5 = $row[5];
+                                    $sql = "SELECT*FROM saw_penilaian ORDER BY kelebihan DESC";
+                                    $hasil = $conn->query($sql);
+                                    $row = $hasil->fetch_row();
+                                    $C6 = $row[6];
+                                } else {
+                                    echo "<tr>
+                                        <td>Data Tidak Ada</td>
+                                    <tr>";
+                                }
 
                                 $sql = "SELECT*FROM saw_penilaian";
                                 $hasil = $conn->query($sql);
@@ -175,15 +157,13 @@
                                             <td align="center"><?= round($row[6] / $C6, 2) ?></td>
                                         </tr>
                                 <?php }
-                                } else {
-                                    echo "<th><h4>Data Tidak Ada</h4></th>";
-                                } ?>
+                                }  ?>
                             </tbody>
                         </table>
                     </div>
                     <div>
                         <b>
-                            <h4>HITUNG SAW</h4>
+                            <h6><b>NILAI PREFERENSI</b></h6>
                         </b>
                         <table class="table">
                             <thead>
@@ -250,14 +230,16 @@
                                         </tr>
                                 <?php }
                                 } else {
-                                    echo "<th><h4>Data Tidak Ada</h4></th>";
+                                    echo "<tr>
+                                        <td>Data Tidak Ada</td>
+                                    <tr>";
                                 } ?>
                             </tbody>
                         </table>
                     </div>
                     <div>
                         <b>
-                            <h4>PERANKINGAN</h4>
+                            <h6><b>PERANKINGAN</b></h6>
                         </b>
                         <table class="table">
                             <thead>
@@ -282,7 +264,9 @@
                                         </tr>
                                 <?php }
                                 } else {
-                                    echo "<th><h4>Data Tidak Ada</h4></th>";
+                                    echo "<tr>
+                                        <td>Data Tidak Ada</td>
+                                    <tr>";
                                 } ?>
                             </tbody>
                         </table>

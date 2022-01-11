@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jan 05, 2022 at 08:15 AM
+-- Generation Time: Jan 06, 2022 at 03:26 PM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -38,9 +38,9 @@ CREATE TABLE `saw_aplikasi` (
 --
 
 INSERT INTO `saw_aplikasi` (`nama`, `pengembang`, `kategori`) VALUES
-('bilibili', 'bilibili', 'Hiburan'),
 ('Clash Of Clans', 'Supercell', 'Permainan'),
-('Peduli Lindungi', 'Ministry of Health Republic Indonesia', 'Pendidikan');
+('Peduli Lindungi', 'Ministry of Health Republic Indonesia', 'Kesehatan'),
+('Tiktok', 'Tiktok Pte. Ltd.', 'Sosial');
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE `saw_kriteria` (
 --
 
 INSERT INTO `saw_kriteria` (`no`, `peringkat`, `ukuran`, `unduhan`, `aktif`, `manfaat`, `kelebihan`) VALUES
-(6, 0.25, 0.13, 0.19, 0.13, 0.19, 0.13);
+(7, 0.24, 0.18, 0.18, 0.12, 0.18, 0.12);
 
 -- --------------------------------------------------------
 
@@ -86,9 +86,9 @@ CREATE TABLE `saw_penilaian` (
 --
 
 INSERT INTO `saw_penilaian` (`nama`, `peringkat`, `ukuran`, `unduhan`, `aktif`, `manfaat`, `kelebihan`) VALUES
-('bilibili', 3.9, 1, 3, 2, 3, 2),
 ('Clash Of Clans', 4.3, 2, 5, 4, 3, 3),
-('Peduli Lindungi', 3.6, 2, 4, 4, 4, 3);
+('Peduli Lindungi', 3.6, 2, 4, 4, 4, 3),
+('Tiktok', 4.5, 3, 3, 3, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -107,9 +107,9 @@ CREATE TABLE `saw_perankingan` (
 --
 
 INSERT INTO `saw_perankingan` (`no`, `nama`, `nilai_akhir`) VALUES
-(1, 'bilibili', 0.765),
-(2, 'Clash Of Clans', 0.908),
-(3, 'Peduli Lindungi', 0.876);
+(1, 'Clash Of Clans', 0.964),
+(2, 'Peduli Lindungi', 0.936),
+(3, 'Tiktok', 0.728);
 
 --
 -- Indexes for dumped tables
@@ -147,7 +147,7 @@ ALTER TABLE `saw_perankingan`
 -- AUTO_INCREMENT for table `saw_kriteria`
 --
 ALTER TABLE `saw_kriteria`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `saw_perankingan`

@@ -1,52 +1,22 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-    <title>Sidebar 07</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<?php
+include 'components/head.php';
+?>
 
 <body>
 
     <div class="wrapper d-flex align-items-stretch">
-        <nav id="sidebar" class="active">
-            <h1><a href="index.php" class="logo">AC</a></h1>
-            <ul class="list-unstyled components mb-5">
-                <li class="active">
-                    <a href="index.php"><span class="fa fa-user"></span> Alternatif</a>
-                </li>
-                <li>
-                    <a href="kriteria.php"><span class="fa fa-sticky-note"></span> Kriteria</a>
-                </li>
-                <li>
-                    <a href="penilaian.php"><span class="fa fa-list-ol"></span> Penilaian</a>
-                </li>
-                <li>
-                    <a href="hitung.php"><span class="fa fa-cogs"></span> Hitung</a>
-                </li>
-            </ul>
-        </nav>
+        <?php
+        include 'components/sidebar.php';
+        ?>
 
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                        <i class="fa fa-bars"></i>
-                        <span class="sr-only">Toggle Menu</span>
-                    </button>
-
-                    <h5 class="nav"> SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN APLIKASI EDITOR'S CHOICE DI PLAY STORE |<b>| METODE SAW</b></h5>
-                </div>
-            </nav>
+            <?php
+            include 'components/navbar.php';
+            ?>
 
             <section id="main-content">
                 <section class="wrapper">
@@ -70,17 +40,17 @@
                         $kategori = $_POST['kategori'];
                         if (($nama == "") or ($pengembang == "")) {
                             echo "<script>
-                                alert('Tolong lengkapi data yang ada!');
-                                </script>";
+                            alert('Tolong lengkapi data yang ada!');
+                            </script>";
                         } else {
-                            $sql = "UPDATE saw_aplikasi SET nama='$nama',
-                                pengembang='$pengembang', kategori='$kategori' WHERE nama='$first_nama'";
+                            $sql = "UPDATE saw_aplikasi SET nama='$nama',pengembang='$pengembang', kategori='$kategori' 
+                                    WHERE nama='$first_nama'";
                             $hasil = $conn->query($sql);
                             if ($hasil) {
                                 echo "<script>
-                                    alert('berhasil di update !');
-                                    window.location.href='index.php'; 
-                                    </script>";
+                                alert('berhasil di update !');
+                                window.location.href='index.php'; 
+                                </script>";
                             }
                         }
                     }
@@ -140,8 +110,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-outline-danger mr-3"><a href="index.php">Cancel</a></button>
-                            <button type="edit" name="edit" class="btn btn-outline-primary">Edit</button>
+                            <div>
+                                <button type="button" class="btn btn-outline-danger mr-3"><a href="index.php"><i class="fa fa-close"></i> Cancel</a></button>
+                                <button type="edit" name="edit" class="btn btn-outline-primary"><i class="fa fa-edit"></i> Edit</button>
+                            </div>
                     </form>
                 <?php } ?>
                 </section>

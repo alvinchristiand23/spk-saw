@@ -1,52 +1,23 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <title>Sidebar 07</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+<?php
+include 'components/head.php';
+?>
 
 <body>
 
   <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar" class="active">
-      <h1><a href="index.php" class="logo">AC</a></h1>
-      <ul class="list-unstyled components mb-5">
-        <li>
-          <a href="index.php"><span class="fa fa-user"></span> Alternatif</a>
-        </li>
-        <li class="active">
-          <a href="kriteria.php"><span class="fa fa-sticky-note"></span> Kriteria</a>
-        </li>
-        <li>
-          <a href="penilaian.php"><span class="fa fa-list-ol"></span> Penilaian</a>
-        </li>
-        <li>
-          <a href="hitung.php"><span class="fa fa-cogs"></span> Hitung</a>
-        </li>
-      </ul>
-    </nav>
+    <?php
+    include 'components/sidebar.php';
+    ?>
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
-            <i class="fa fa-bars"></i>
-            <span class="sr-only">Toggle Menu</span>
-          </button>
-
-          <h5 class="nav"> SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN APLIKASI EDITOR'S CHOICE DI PLAY STORE |<b>| METODE SAW</b></h5>
-        </div>
-      </nav>
+      <?php
+      include 'components/navbar.php';
+      ?>
 
       <section id="main-content">
         <section class="wrapper">
@@ -69,7 +40,6 @@
               var e = (document.getElementById("manfaat_param").value).substring(0, 1);
               var f = (document.getElementById("kelebihan_param").value).substring(0, 1);
               var total = Number(a) + Number(b) + Number(c) + Number(d) + Number(e) + Number(f);
-              // document.getElementById("pendapatan_ortu").value=((Number(a)/total)*-1).toFixed(2);
               document.getElementById("peringkat").value = (Number(a) / total).toFixed(2);
               document.getElementById("ukuran").value = (Number(b) / total).toFixed(2);
               document.getElementById("unduhan").value = (Number(c) / total).toFixed(2);
@@ -134,12 +104,12 @@
           <!--start inputan-->
           <form class="form-validate form-horizontal" id="register_form" method="post" action="">
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Kriteria</label>
+              <label class="col-sm-2 col-form-label"><b>Kriteria</b></label>
               <div class="col-sm-3">
-                <label>Bobot</label>
+                <label><b>Bobot</b></label>
               </div>
               <div class="col-sm-2">
-                <label>Perbaikan Bobot</label>
+                <label><b>Perbaikan Bobot</b></label>
               </div>
             </div>
             <div class="form-group row">
@@ -158,7 +128,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Ukuran Aplikasi</label>
+              <label class="col-sm-2 col-form-label">Ukuran</label>
               <div class="col-sm-3">
                 <select class="form-control" name="ukuran_param" id="ukuran_param">
                   <option>1. Sangat Rendah</option>
@@ -173,7 +143,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Jumlah Unduhan</label>
+              <label class="col-sm-2 col-form-label">Unduhan</label>
               <div class="col-sm-3">
                 <select class="form-control" name="unduhan_param" id="unduhan_param">
                   <option>1. Sangat Rendah</option>
@@ -188,7 +158,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Jumlah Pengguna Aktif</label>
+              <label class="col-sm-2 col-form-label">Pengguna Aktif</label>
               <div class="col-sm-3">
                 <select class="form-control" name="aktif_param" id="aktif_param">
                   <option>1. Sangat Rendah</option>
@@ -203,7 +173,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Manfaat Aplikasi</label>
+              <label class="col-sm-2 col-form-label">Manfaat</label>
               <div class="col-sm-3">
                 <select class="form-control" name="manfaat_param" id="manfaat_param">
                   <option>1. Sangat Rendah</option>
@@ -218,7 +188,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Kelebihan Aplikasi</label>
+              <label class="col-sm-2 col-form-label">Kelebihan</label>
               <div class="col-sm-3">
                 <select class="form-control" name="kelebihan_param" id="kelebihan_param">
                   <option>1. Sangat Rendah</option>
@@ -242,14 +212,13 @@
           <table class="table">
             <thead>
               <tr>
-                <th><i class="arrow_down_alt"></i> No</th>
-                <th><i class="arrow_down_alt"></i> Peringkat & Ulasan</th>
-                <th><i class="arrow_down_alt"></i> Ukuran</th>
-                <th><i class="arrow_down_alt"></i> Unduhan</th>
-                <th><i class="arrow_down_alt"></i> Pengguna Aktif </th>
-                <th><i class="arrow_down_alt"></i> Manfaat</th>
-                <th><i class="arrow_down_alt"></i> Kelebihan</th>
-                <th><i class="icon_cogs"></i> Action</th>
+                <th><i class="fa fa-arrow-down"></i> Peringkat & Ulasan</th>
+                <th><i class="fa fa-arrow-down"></i> Ukuran</th>
+                <th><i class="fa fa-arrow-down"></i> Unduhan</th>
+                <th><i class="fa fa-arrow-down"></i> Pengguna Aktif</th>
+                <th><i class="fa fa-arrow-down"></i> Manfaat</th>
+                <th><i class="fa fa-arrow-down"></i> Kelebihan</th>
+                <th><i class="fa fa-cogs"></i> Aksi</th>
               </tr>
             </thead>
             <?php
@@ -261,7 +230,6 @@
               while ($row = $hasil->fetch_row()) {
             ?>
                 <tr>
-                  <td><?php echo $b = $b + 1; ?></td>
                   <td Align="center"><?= $row[1] ?></td>
                   <td Align="center"><?= $row[2] ?></td>
                   <td Align="center"><?= $row[3] ?></td>
@@ -275,6 +243,10 @@
                   </td>
                 </tr>
             <?php }
+            } else {
+              echo "<tr>
+                  <td>Data Tidak Ada</td>
+              <tr>";
             } ?>
             </tbody>
           </table>

@@ -1,52 +1,23 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <title>Sidebar 07</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+<?php
+include 'components/head.php';
+?>
 
 <body>
 
   <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar" class="active">
-      <h1><a href="index.php" class="logo">AC</a></h1>
-      <ul class="list-unstyled components mb-5">
-        <li>
-          <a href="index.php"><span class="fa fa-user"></span> Alternatif</a>
-        </li>
-        <li>
-          <a href="kriteria.php"><span class="fa fa-sticky-note"></span> Kriteria</a>
-        </li>
-        <li class="active">
-          <a href="penilaian.php"><span class="fa fa-list-ol"></span> Penilaian</a>
-        </li>
-        <li>
-          <a href="hitung.php"><span class="fa fa-cogs"></span> Hitung</a>
-        </li>
-      </ul>
-    </nav>
+    <?php
+    include 'components/sidebar.php';
+    ?>
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
-            <i class="fa fa-bars"></i>
-            <span class="sr-only">Toggle Menu</span>
-          </button>
-
-          <p class="nav"> SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN APLIKASI EDITOR'S CHOICE DI PLAY STORE - METODE SAW </p>
-        </div>
-      </nav>
+      <?php
+      include 'components/navbar.php';
+      ?>
 
       <section id="main-content">
         <section class="wrapper">
@@ -109,31 +80,31 @@
           <!--start inputan-->
           <form method="POST" action="">
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Nama Aplikasi</label>
-              <div class="col-sm-5">
+              <label class="col-sm-2 col-form-label">Alternatif</label>
+              <div class="col-sm-4">
                 <select class="form-control" name="nama">
-                  <<?php
-                    //load nama
-                    $sql = "SELECT * FROM saw_aplikasi";
-                    $hasil = $conn->query($sql);
-                    $rows = $hasil->num_rows;
-                    if ($rows > 0) {
-                    ?> <?php while ($row = mysqli_fetch_array($hasil)) :; {
-                          } ?> <option><?php echo $row[0]; ?></option>
-                  <?php endwhile; ?>
+                  <?php
+                  //load nama
+                  $sql = "SELECT * FROM saw_aplikasi";
+                  $hasil = $conn->query($sql);
+                  $rows = $hasil->num_rows;
+                  if ($rows > 0) {
+                    while ($row = mysqli_fetch_array($hasil)) :; {
+                      } ?> <option><?php echo $row[0]; ?></option>
+                  <?php endwhile;
+                  } ?>
                 </select>
-              <?php } ?>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Peringkat & Ulasan</label>
-              <div class="col-sm-5">
+              <div class="col-sm-4">
                 <input type="text" class="form-control" name="peringkat" id="peringkat">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Ukuran Aplikasi</label>
-              <div class="col-sm-5">
+              <label class="col-sm-2 col-form-label">Ukuran</label>
+              <div class="col-sm-4">
                 <select class=" form-control" name="ukuran">
                   <option>(1) Sangat Ringan</option>
                   <option>(2) Ringan</option>
@@ -144,8 +115,8 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Jumlah Unduhan</label>
-              <div class="col-sm-5">
+              <label class="col-sm-2 col-form-label">Unduhan</label>
+              <div class="col-sm-4">
                 <select class=" form-control" name="unduhan">
                   <option>(1) Sangat Sedikit</option>
                   <option>(2) Sedikit</option>
@@ -156,8 +127,8 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Jumlah Pengguna Aktif</label>
-              <div class="col-sm-5">
+              <label class="col-sm-2 col-form-label">Pengguna Aktif</label>
+              <div class="col-sm-4">
                 <select class=" form-control" name="aktif">
                   <option>(1) Sangat Sedikit</option>
                   <option>(2) Sedikit</option>
@@ -168,8 +139,8 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Manfaat Aplikasi</label>
-              <div class="col-sm-5">
+              <label class="col-sm-2 col-form-label">Manfaat</label>
+              <div class="col-sm-4">
                 <select class=" form-control" name="manfaat">
                   <option>(1) Sangat Sedikit</option>
                   <option>(2) Sedikit</option>
@@ -180,8 +151,8 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-sm-2 col-form-label">Kelebihan Aplikasi</label>
-              <div class="col-sm-5">
+              <label class="col-sm-2 col-form-label">Kelebihan</label>
+              <div class="col-sm-4">
                 <select class=" form-control" name="kelebihan">
                   <option>(1) Sangat Sedikit</option>
                   <option>(2) Sedikit</option>
@@ -191,21 +162,22 @@
                 </select>
               </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
-            <br><br>
+            <div class="mb-4">
+              <button type="submit" name="submit" class="btn btn-outline-primary"><i class="fa fa-save"></i> Submit</button>
+            </div>
           </form>
           <table class="table">
             <thead>
               <tr>
                 <th><i class="fa fa-arrow-down"></i> No</th>
-                <th><i class="icon_id-2_alt"></i> Nama</th>
+                <th><i class="fa fa-arrow-down"></i> Alternatif</th>
                 <th><i class="fa fa-arrow-down"></i> Peringkat & Ulasan</th>
-                <th><i class="fa fa-arrow-down"></i> Ukuran Aplikasi</th>
-                <th><i class="fa fa-arrow-down"></i> Jumlah Unduhan</th>
-                <th><i class="fa fa-arrow-down"></i> Jumlah Pengguna Aktif</th>
+                <th><i class="fa fa-arrow-down"></i> Ukuran</th>
+                <th><i class="fa fa-arrow-down"></i> Unduhan</th>
+                <th><i class="fa fa-arrow-down"></i> Pengguna Aktif</th>
                 <th><i class="fa fa-arrow-down"></i> Manfaat</th>
                 <th><i class="fa fa-arrow-down"></i> Kelebihan</th>
-                <th><i class="icon_cogs"></i> Action</th>
+                <th><i class="fa fa-cogs"></i> Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -234,6 +206,10 @@
                     </td>
                   </tr>
               <?php }
+              } else {
+                echo "<tr>
+                    <td>Data Tidak Ada</td>
+                <tr>";
               } ?>
             </tbody>
           </table>

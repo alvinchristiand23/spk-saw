@@ -1,52 +1,23 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <title>Pemilihan Aplikasi Editor's Choice di PlayStore</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+<?php
+include 'components/head.php';
+?>
 
 <body>
 
   <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar" class="active">
-      <h1><a href="index.php" class="logo">AC</a></h1>
-      <ul class="list-unstyled components mb-5">
-        <li class="active">
-          <a href="index.php"><span class="fa fa-user"></span> Alternatif</a>
-        </li>
-        <li>
-          <a href="kriteria.php"><span class="fa fa-sticky-note"></span> Kriteria</a>
-        </li>
-        <li>
-          <a href="penilaian.php"><span class="fa fa-list-ol"></span> Penilaian</a>
-        </li>
-        <li>
-          <a href="hitung.php"><span class="fa fa-cogs"></span> Hitung</a>
-        </li>
-      </ul>
-    </nav>
+    <?php
+    include 'components/sidebar.php';
+    ?>
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
-            <i class="fa fa-bars"></i>
-            <span class="sr-only">Toggle Menu</span>
-          </button>
-
-          <h5 class="nav"> SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN APLIKASI EDITOR'S CHOICE DI PLAY STORE |<b>| METODE SAW</b></h5>
-        </div>
-      </nav>
+      <?php
+      include 'components/navbar.php';
+      ?>
 
       <section id="main-content">
         <section class="wrapper">
@@ -115,17 +86,18 @@
                 </select>
               </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
-            <br><br>
+            <div class="mb-4">
+              <button type="submit" name="submit" class="btn btn-outline-primary"><i class="fa fa-save"></i> Submit</button>
+            </div>
           </form>
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nama Aplikasi</th>
-                <th scope="col">Pengembang Aplikasi</th>
-                <th scope="col">Kategori Aplikasi</th>
-                <th><i class="icon_cogs"></i> Action</th>
+                <th><i class="fa fa-arrow-down"></i> No</th>
+                <th><i class="fa fa-arrow-down"></i> Nama Aplikasi</th>
+                <th><i class="fa fa-arrow-down"></i> Pengembang Aplikasi</th>
+                <th><i class="fa fa-arrow-down"></i> Kategori Aplikasi</th>
+                <th><i class="fa fa-cogs"></i> Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -145,11 +117,15 @@
                     <td>
                       <div class="btn-group">
                         <a class="btn btn-success" href="alt_ubah.php?nama=<?= $row[0] ?>"><i class="fa fa-edit"></i></a>
-                        <a class="btn btn-danger" href="alt_hapus.php?nama=<?= $row[0] ?>"><i class="fa fa-close"></i></a>
+                        <a class="btn btn-danger" href="alt_hapus.php?nama=<?= $row[0] ?>"><i class="fa fa-trash"></i></a>
                       </div>
                     </td>
                   </tr>
               <?php }
+              } else {
+                echo "<tr>
+                    <td>Data Tidak Ada</td>
+                <tr>";
               } ?>
             </tbody>
           </table>
